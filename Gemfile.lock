@@ -1,9 +1,16 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.0.7)
     daemons (1.1.8)
     eventmachine (0.12.10)
+    method_source (0.8)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
     rack (1.4.1)
+    slop (3.3.2)
     thin (1.4.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -13,4 +20,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pry
   thin
