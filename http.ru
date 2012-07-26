@@ -3,12 +3,7 @@ require 'thin'
 require 'pry'
 
 app = proc do |env|
-  binding.pry
   
-  # translate URL path to the filesystem
-  # open file and parse as simplate
-  # eval
- 
   pinfo = env['PATH_INFO'][1..-1]
   puts "pinfo: ", pinfo
   raw = ''
@@ -16,13 +11,25 @@ app = proc do |env|
     raw = f.read
   end
 
+  pages = raw.split('')
+  if pages.length == 1
+    pages = ['', ''] + pages
+  elsif pages.length == 2
+    pages = [''] + pages
+  end
+  
+  context = binding
+  context.eval(pages[1])
+
+  out = pages[2]
+
   [
     200,          # Status code
     {             # Response headers
       'Content-Type' => 'text/html',
-      'Content-Length' => raw.length.to_s,
+      'Content-Length' => out.length.to_s,
     },
-    [raw] # Response body
+    [out] # Response body
   ]
 end
 
