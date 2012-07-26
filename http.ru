@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'thin'
 require 'pry'
+require 'erb'
 
 app = proc do |env|
   
@@ -21,7 +22,9 @@ app = proc do |env|
   context = binding
   context.eval(pages[1])
 
-  out = pages[2]
+  template = ERB.new pages[2]
+
+  out = template.result(context)
 
   [
     200,          # Status code
