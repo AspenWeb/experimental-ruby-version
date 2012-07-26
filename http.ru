@@ -12,6 +12,7 @@ app = proc do |env|
     raw = f.read
   end
 
+  raw = raw.gsub('^L', '')
   pages = raw.split('')
   if pages.length == 1
     pages = ['', ''] + pages
