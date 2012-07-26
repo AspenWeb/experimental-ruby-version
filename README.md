@@ -1,6 +1,7 @@
 Aspen (http://aspen.io) is a Python web framework that translates URLs directly
-to the filesystem and uses the ^L (ASCII page break) character to separate code
-and templating. This is a port of the framework to Ruby.
+to the filesystem and uses the ^L character (ASCII page break -- you can also
+use two separate characters ^ and L) to separate code and templating. This is a
+port of the framework to Ruby.
 
 ### Install
 
@@ -22,4 +23,4 @@ foo = "Ruby"
 Greetings, <%= foo %>!
 ```
 
-Page one is Ruby and page two is ERB, using page one's context.
+Page one is Ruby and page two is ERB, using page one's binding context.
